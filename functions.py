@@ -75,3 +75,29 @@ def StartDate(engine, Base, date):
             "Lowest Temp" : lowestTemp[0][0],
             "Average Temp" : avgTemp[0][0]})
 
+def StartAndEndDates(engine, Base, date1, date2):
+
+    Measurement = Base.classes.measurement
+
+    session = Session(engine)
+
+    lowestTemp = session.query(func.min(Measurement.tobs)).\
+        filter(Measurement.station == 'USC00519281').\
+        filter(Measurement.date >= date1).\
+        filter(Measurement.date <= date2).group_by(Measurement.station).all()
+
+    highestTemp = session.query(func.max(Measurement.tobs)).\
+        filter(Measurement.station == 'USC00519281').\
+        filter(Measurement.date >= date1).\
+        filter(Measurement.date <= date2).group_by(Measurement.station).all()
+
+    avgTemp = session.query(func.avg(Measurement.tobs)).\
+        filter(Measurement.station == 'USC00519281').\
+        filter(Measurement.date >= date1).\
+        filter(Measurement.date <= date2).group_by(Measurement.station).all()
+
+    session.close()
+
+    return ({"Highest Temp" : highestTemp[0][0],
+            "Lowest Temp" : lowestTemp[0][0],
+            "Average Temp" : avgTemp[0][0]})

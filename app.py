@@ -25,8 +25,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def welcome():
-    """Here are all of the available API routes."""
-    return '<a href="/api/v1.0/precipitation" target="_blank">/api/v1.0/precipitation</a><br/><a href="/api/v1.0/stations" target="_blank">/api/v1.0/stations</a><br/><a href="/api/v1.0/tobs" target="_blank">/api/v1.0/tobs</a><br/><a href="/api/v1.0/<start>" target="_blank">/api/v1.0/<start></a><br/><a href="/api/v1.0/<start>/<end>" target="_blank">/api/v1.0/<start>/<end></a>'
+    return 'Here are all of the available API routes!<br/><br/>Explore weather data for Honolulu, HI through 2017-08-23.<br/><a href="/api/v1.0/precipitation" target="_blank">/api/v1.0/precipitation</a><br/><a href="/api/v1.0/stations" target="_blank">/api/v1.0/stations</a><br/><a href="/api/v1.0/tobs" target="_blank">/api/v1.0/tobs</a><br/>Input a /start_date in the form /yyyy-mm-dd for temp data from that date forward:<br/> <a href="/api/v1.0/<start>" target="_blank">/api/v1.0/<start></a><br/>Input a /start_date followed by an /end_date in the same format for temp data within defined range:<br/><a href="/api/v1.0/<start>/<end>" target="_blank">/api/v1.0/<start>/<end></a>'
     
 
 

@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, func
 import pandas as pd
 from flask import jsonify
 
-# Defining a 
+# Defining a function for every app.route that can be pulled into app.py
 def GetDateAndPrecipDict(engine, Base):
 
     # Saving references to tables in a function-specific way to make code more generalizable.
@@ -50,7 +50,6 @@ def GetTobsData(engine, Base):
 
     return temp12months
 
-# Remember to put in a try, except error handling statement!
 def StartDate(engine, Base, date):
 
     Measurement = Base.classes.measurement
